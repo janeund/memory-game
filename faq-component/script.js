@@ -13,4 +13,38 @@ const data = [
   },
 ]
 
-const faqList = document.querySelector('.faq-list');
+// Display answers function
+const displayFaqItems = () => {
+  data.forEach(item => {
+    const listItem = document.createElement('li');
+    listItem.classList.add('faq-item');
+    listItem.innerHTML = `
+    <div class="faq-header">
+      <span class="faq-icon">
+        <i class="arrow"></i>
+      </span>
+      <h2 class="faq-title">${item.question}</h2>
+    </div>
+    <div class="faq-content">
+      <p class="faq-answer">${item.answer}</p>
+    </div>`;
+    document.querySelector('.faq-list').appendChild(listItem);     
+  });
+}
+
+// Event listener on questions
+const clickHandler = () => {
+  const faqItems = document.querySelectorAll('.faq-item');
+  faqItems.forEach(item => {
+      item.addEventListener('click', () => {
+        item.classList.toggle('active');
+      });
+    })
+}
+
+const init = () => {
+  displayFaqItems();
+  clickHandler();
+}
+
+document.addEventListener('DOMContentLoaded', init);
