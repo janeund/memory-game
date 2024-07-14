@@ -12,3 +12,5 @@ const data = [
     answer: "Outdoor cats live 5 years on average. Indoor\ncats live 15 years on average.",
   },
 ]
+
+const faqList = document.querySelector('.faq-list');
