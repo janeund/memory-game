@@ -15,9 +15,12 @@ const data = [
 
 // Display answers function
 const displayFaqItems = () => {
-  data.forEach(item => {
+  data.forEach((item, index) => {
     const listItem = document.createElement('li');
     listItem.classList.add('faq-item');
+    if (index === 0) {
+      listItem.classList.add('active');
+    }
     listItem.innerHTML = `
     <div class="faq-header">
       <span class="faq-icon">
@@ -28,8 +31,10 @@ const displayFaqItems = () => {
     <div class="faq-content">
       <p class="faq-answer">${item.answer}</p>
     </div>`;
-    document.querySelector('.faq-list').appendChild(listItem);     
+    const faqList = document.querySelector('.faq-list');
+    faqList.appendChild(listItem);      
   });
+  
 }
 
 // Event listener on questions
