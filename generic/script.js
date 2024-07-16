@@ -1,24 +1,18 @@
-function integerToRoman(num) {
-  // your code here
-  const data = {
-    M: 1000,
-    D: 500,
-    C: 100,
-    L: 50,
-    X: 10,
-    V: 5,
-    I: 1
-  }
-
-  let roman = '';
-  for (let key in data) {
-    while (num >= data[key]) {
-      roman += key;
-      num -= data[key]
+function findSingle(arr) {
+  const obj = {};
+  for (let i of arr) {
+    if (!obj[i]) {
+      obj[i] = 1
+    } else {
+      obj[i]++
     }
   }
-  return roman
-
+  for (let i in obj) {
+    if (obj[i] === 1) {
+      return i
+    }
+  }
 }
 
-console.log(integerToRoman(123));
+const arr = [10, 2, 2, 1, 0, 0, 10]
+console.log(findSingle(arr));  // 1
