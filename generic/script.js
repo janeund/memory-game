@@ -1,18 +1,10 @@
-function findSingle(arr) {
-  const obj = {};
-  for (let i of arr) {
-    if (!obj[i]) {
-      obj[i] = 1
-    } else {
-      obj[i]++
-    }
+function count(x) {
+  let reversed = '';
+  let numToStr = x.toString();
+  for (let i = numToStr.length - 1; i >= 0; i--) {
+      reversed += numToStr[i];
   }
-  for (let i in obj) {
-    if (obj[i] === 1) {
-      return i
-    }
-  }
+  return reversed === numToStr 
 }
-
-const arr = [10, 2, 2, 1, 0, 0, 10]
-console.log(findSingle(arr));  // 1
+const arr = 509;
+console.log(count(arr));  // 1
