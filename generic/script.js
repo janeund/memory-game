@@ -1,10 +1,23 @@
-function count(x) {
-  let reversed = '';
-  let numToStr = x.toString();
-  for (let i = numToStr.length - 1; i >= 0; i--) {
-      reversed += numToStr[i];
+function count(str) {
+  let obj = {};
+  let max = 0;
+  let result = null;
+  for (let i of str) {
+    if (!obj[i]) {
+      obj[i] = 1
+    } else {
+      obj[i]++
+    }
   }
-  return reversed === numToStr 
+  for (let i in obj) {
+    if (obj[i] > max) {
+      max = obj[i];
+      result = i;
+    } else if (obj[i] === max) {
+      result = [...result, i]
+    }
+  } 
+  return result
 }
-const arr = 509;
-console.log(count(arr));  // 1
+
+console.log(count('aabbc')); 
