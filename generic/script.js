@@ -1,23 +1,9 @@
-function count(str) {
-  let obj = {};
-  let max = 0;
-  let result = null;
-  for (let i of str) {
-    if (!obj[i]) {
-      obj[i] = 1
-    } else {
-      obj[i]++
-    }
-  }
-  for (let i in obj) {
-    if (obj[i] > max) {
-      max = obj[i];
-      result = i;
-    } else if (obj[i] === max) {
-      result = [...result, i]
-    }
-  } 
-  return result
+let arr = [8, 8, 62, 62, 48, 48, 34, 34, 82, 82, 55, 55, 20, 20, 84, 84];
+
+// let newArr = arr.splice(0, 1)
+let newNew = null;
+for (let i = 0; i < arr.length; i++) {
+  console.log(+arr.splice(i, 1)) 
 }
 
-console.log(count('aabbc')); 
+console.log(newNew)
