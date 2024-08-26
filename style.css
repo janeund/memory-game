@@ -114,6 +114,10 @@ textarea, select {
   font-size: var(--fs-600);
 }
 
+.fs-500 {
+  font-size: var(--fs-500);
+}
+
 
 /* ------- COMPONENTS ---------- */
 .content {
@@ -159,6 +163,7 @@ textarea, select {
 
 .selected {
   background-color: var(--clr-primary-900);
+  pointer-events: none;
 }
 
 
@@ -231,7 +236,6 @@ textarea, select {
 
 .card {
   position: relative;
-  font-size: var(--size-900);
   background-color: var(--clr-primary-800);
   color: var(--clr-primary-300);
   border-radius: 50%;
@@ -277,11 +281,13 @@ textarea, select {
 .card-4 {
   width: 6.375rem;
   height: 6.375rem;
+  font-size: var(--fs-800);
 }
 
 .card-6 {
   width: 4.125rem;
   height: 4.125rem;
+  font-size: var(--fs-500);
 }
 
 .actions {

@@ -21,7 +21,7 @@ let movesCount = 0;
 const moveCounter = () => {
   const moves = document.querySelector('.moves')
   movesCount++;
-  moves.textContent = movesCount; 
+  moves.textContent = movesCount;
 }
 
 // Time up counter
@@ -31,7 +31,6 @@ const timeCounter = () => {
   const sec = document.getElementById('sec');
   totalSec = 0;
   timer = setInterval(() => {
-    console.log(totalSec);
     totalSec++;
     min.innerHTML = pad(parseInt(totalSec / 60));
     sec.innerHTML = pad(totalSec % 60);
@@ -133,7 +132,6 @@ const startGame = () => {
       selectedTabs.size = tab.id
     }
   })
-  console.log(selectedTabs);
   displayGrid(selectedTabs.theme, selectedTabs.size);
   timeCounter();
 }
@@ -149,7 +147,7 @@ const displayGrid = (theme, size) => {
   body.insertBefore(container, body.firstChild);
   const headerTemplate = `
   <header class="header">
-      <a href="/memory-game/index.html" class="logo">
+      <a href="index.html" class="logo">
         <img src="./logo.svg" alt="memory">
       </a>
       <div class="buttons">
@@ -184,7 +182,7 @@ const displayGrid = (theme, size) => {
     } else {
       card.innerHTML = `
        <div class='front-face'></div>
-       <div class='back-face'><i class="fa-solid fs-600 fa-${el}"></i></div>`;
+       <div class='back-face'><i class="fa-solid fa-${el}"></i></div>`;
     }
     gameContainer.appendChild(card);
   })
@@ -253,7 +251,7 @@ const cardClickHandler = (size) => {
       }
       moveCounter();
     }
-      console.log(match, clicked, correct, correct.length, size);
+      // console.log(match, clicked, correct, correct.length, size);
       if (correct.length === size && clicked.length === 0) {
         setTimeout(() => showModal(), 1500)
       }
@@ -272,11 +270,12 @@ const showModal = () => {
       <div class="actions actions-modal">
         <div class="actions-item actions-item-modal timer">
           <p class="actions-name">Time Elapsed</p>
-          <p class="actions-value">1:25</p>
+          <p class="actions-value">${pad(parseInt(totalSec / 60))} : ${pad(totalSec % 60)}
+          </p>
         </div>
         <div class="actions-item actions-item-modal moves-counter">
           <p class="actions-name">Moves Taken</p>
-          <p class="actions-value">15 Moves</p>
+          <p class="actions-value">${movesCount} Moves</p>
         </div>
       </div>
       <div class="buttons buttons-modal">
@@ -285,6 +284,10 @@ const showModal = () => {
       </div>
     </div>`;
     document.querySelector('.container').appendChild(modal);
+    const restartBtn = document.querySelector('.restart-btn');
+    const newGameBtn = document.querySelector('.new-game-btn');
+    restartBtn.addEventListener('click', restart);
+    newGameBtn.addEventListener('click', newGame);
 }
 
 // Generate random card value 
