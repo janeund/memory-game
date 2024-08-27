@@ -1,13 +1,13 @@
 # Memory Game App
 
-Memory game application is designed to test player's mnemonic skills in a fun way.
+Memory game application is designed to test player's mnemonic skills in a fun way. User can choose between game theme (numbers or images) and grid size (4x4 or 6x6).
 
-[Live Demo](https://janeund.github.io/memory-game/)
+👉🏻 [Live Demo](https://janeund.github.io/memory-game/)
 
 ## Technologies Used
 
-- HTML
-- CSS
+- HTML5
+- CSS3
 - Vanilla JavaScript
 - Vite
 
