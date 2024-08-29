@@ -13,15 +13,15 @@ Memory game application is designed to test player's mnemonic skills in a fun wa
 
 ## Features
 
-- setting the theme to use numbers or icons within the tiles
-- choosing to play on either a 6x6 or 4x4 grid
-- counting moves by clicking on tiles
-- tracking time elapsed from the moment when new game started
-- starting new game or restarting the current one by clicking on respective buttons
+- Setting the theme to use numbers or icons within the tiles
+- Choosing to play on either a 6x6 or 4x4 grid
+- Counting moves by clicking on tiles
+- Tracking time elapsed from the moment when new game started
+- Starting new game or restarting the current one by clicking on respective buttons
 
 ## Future Improvements
 
-- add responsiveness for different screen sizes
+- Add responsiveness for different screen sizes
 
 ## Start Locally
 
