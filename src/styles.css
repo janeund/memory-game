@@ -55,7 +55,8 @@ button {
 /* ------- LAYOUT ---------- */
 .page {
   min-height: 100vh;
-  padding-block: 2rem;
+  min-height: 100svh;
+  padding-block: clamp(1rem, 4vh, 2rem);
 }
 
 .page-dark {
@@ -172,7 +173,7 @@ button {
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
-  margin-block-end: clamp(2rem, 8vw, 5rem);
+  margin-block-end: clamp(1rem, 5vh, 4rem);
 }
 
 .logo {
@@ -187,11 +188,13 @@ button {
   gap: 1rem;
 }
 
+/* The grid is limited by the screen height too, so the whole game fits without scrolling */
 .grid {
   display: grid;
-  width: min(100%, 33rem);
+  width: min(100%, 33rem, 100vh - 19rem);
+  width: min(100%, 33rem, 100svh - 19rem);
   margin-inline: auto;
-  margin-block-end: clamp(2rem, 8vw, 6rem);
+  margin-block-end: clamp(1rem, 5vh, 4rem);
 }
 
 .grid-4 {
