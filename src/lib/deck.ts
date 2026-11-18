@@ -1,12 +1,14 @@
+import type { CardData, GridSize, Theme } from '../types.ts';
+
 // Font Awesome icon names (fa-solid). 18 are needed for a 6x6 grid.
 export const ICONS = [
   'plane', 'star', 'lemon', 'tree', 'umbrella', 'pen',
   'cloud', 'mountain-sun', 'anchor', 'bicycle', 'bolt', 'bug',
   'car', 'futbol', 'heart', 'moon', 'music', 'snowflake',
-];
+] as const;
 
 // Fisher–Yates shuffle, returns a new array
-export function shuffle(items) {
+export function shuffle<T>(items: readonly T[]): T[] {
   const arr = [...items];
   for (let i = arr.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -16,7 +18,7 @@ export function shuffle(items) {
 }
 
 // Pick `count` different values for the chosen theme
-function pickValues(theme, count) {
+function pickValues(theme: Theme, count: number): CardData['value'][] {
   if (theme === 'icons') return shuffle(ICONS).slice(0, count);
   // Numbers: distinct values, so every value appears exactly twice
   const numbers = Array.from({ length: 99 }, (_, i) => i + 1);
@@ -24,12 +26,12 @@ function pickValues(theme, count) {
 }
 
 // Build a shuffled deck of pairs for a size x size grid
-export function createDeck(theme, size) {
+export function createDeck(theme: Theme, size: GridSize): CardData[] {
   const values = pickValues(theme, (size * size) / 2);
   return shuffle([...values, ...values]).map((value, id) => ({ id, value }));
 }
 
-export function formatTime(totalSec) {
+export function formatTime(totalSec: number): string {
   const min = String(Math.floor(totalSec / 60)).padStart(2, '0');
   const sec = String(totalSec % 60).padStart(2, '0');
   return `${min}:${sec}`;

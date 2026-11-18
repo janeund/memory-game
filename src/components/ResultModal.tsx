@@ -1,8 +1,15 @@
 import { useEffect, useRef } from 'react';
-import { formatTime } from '../lib/deck.js';
+import { formatTime } from '../lib/deck.ts';
 
-export default function ResultModal({ seconds, moves, onRestart, onNewGame }) {
-  const restartRef = useRef(null);
+interface ResultModalProps {
+  seconds: number;
+  moves: number;
+  onRestart: () => void;
+  onNewGame: () => void;
+}
+
+export default function ResultModal({ seconds, moves, onRestart, onNewGame }: ResultModalProps) {
+  const restartRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     restartRef.current?.focus();

@@ -1,5 +1,15 @@
+import type { CardData, Theme } from '../types.ts';
+
+interface CardProps {
+  card: CardData;
+  theme: Theme;
+  isOpen: boolean;
+  isMatched: boolean;
+  onClick: () => void;
+}
+
 // Open (just picked) cards are orange, matched pairs turn light blue
-export default function Card({ card, theme, isOpen, isMatched, onClick }) {
+export default function Card({ card, theme, isOpen, isMatched, onClick }: CardProps) {
   const faceUp = isOpen || isMatched;
   const state = isMatched ? 'matched' : isOpen ? 'active' : '';
 

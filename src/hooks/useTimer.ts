@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 // Counts seconds while `running` is true. Changing `resetKey` starts again from 0.
-export function useTimer(running, resetKey) {
+export function useTimer(running: boolean, resetKey: number): number {
   const [seconds, setSeconds] = useState(0);
 
   useEffect(() => {

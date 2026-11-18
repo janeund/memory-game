@@ -1,16 +1,29 @@
 import { useState } from 'react';
+import type { GameSettings, GridSize, Theme } from '../types.ts';
 
-const THEMES = [
+interface Option<T> {
+  value: T;
+  label: string;
+}
+
+const THEMES: Option<Theme>[] = [
   { value: 'numbers', label: 'Numbers' },
   { value: 'icons', label: 'Icons' },
 ];
 
-const SIZES = [
+const SIZES: Option<GridSize>[] = [
   { value: 4, label: '4x4' },
   { value: 6, label: '6x6' },
 ];
 
-function OptionGroup({ title, options, value, onChange }) {
+interface OptionGroupProps<T> {
+  title: string;
+  options: Option<T>[];
+  value: T;
+  onChange: (value: T) => void;
+}
+
+function OptionGroup<T extends string | number>({ title, options, value, onChange }: OptionGroupProps<T>) {
   return (
     <fieldset className="option-group">
       <legend className="heading-secondary">{title}</legend>
@@ -32,9 +45,13 @@ function OptionGroup({ title, options, value, onChange }) {
   );
 }
 
-export default function SetupScreen({ onStart }) {
-  const [theme, setTheme] = useState('numbers');
-  const [size, setSize] = useState(4);
+interface SetupScreenProps {
+  onStart: (settings: GameSettings) => void;
+}
+
+export default function SetupScreen({ onStart }: SetupScreenProps) {
+  const [theme, setTheme] = useState<Theme>('numbers');
+  const [size, setSize] = useState<GridSize>(4);
 
   return (
     <div className="page page-dark">

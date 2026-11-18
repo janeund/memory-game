@@ -1,19 +1,25 @@
 import { useEffect, useState } from 'react';
-import Card from './Card.jsx';
-import ResultModal from './ResultModal.jsx';
-import { createDeck, formatTime } from '../lib/deck.js';
-import { useTimer } from '../hooks/useTimer.js';
+import Card from './Card.tsx';
+import ResultModal from './ResultModal.tsx';
+import { createDeck, formatTime } from '../lib/deck.ts';
+import { useTimer } from '../hooks/useTimer.ts';
+import type { GameSettings } from '../types.ts';
 
 const MISMATCH_DELAY = 900;
 
-export default function Game({ settings, onNewGame }) {
+interface GameProps {
+  settings: GameSettings;
+  onNewGame: () => void;
+}
+
+export default function Game({ settings, onNewGame }: GameProps) {
   const { theme, size } = settings;
 
   // Bumping `round` deals a fresh deck and resets moves and time
   const [round, setRound] = useState(0);
   const [deck, setDeck] = useState(() => createDeck(theme, size));
-  const [open, setOpen] = useState([]); // ids of face-up, not yet matched cards (max 2)
-  const [matched, setMatched] = useState(() => new Set());
+  const [open, setOpen] = useState<number[]>([]); // ids of face-up, not yet matched cards (max 2)
+  const [matched, setMatched] = useState<Set<number>>(() => new Set());
   const [moves, setMoves] = useState(0);
   const [started, setStarted] = useState(false);
 
@@ -29,7 +35,7 @@ export default function Game({ settings, onNewGame }) {
     setRound((r) => r + 1);
   }
 
-  function flip(id) {
+  function flip(id: number) {
     if (open.length === 2 || open.includes(id) || matched.has(id)) return;
     if (!started) setStarted(true);
 

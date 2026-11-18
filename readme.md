@@ -7,6 +7,7 @@ Memory game application is designed to test player's mnemonic skills in a fun wa
 ## Technologies Used
 
 - React 18 (function components and hooks)
+- TypeScript (strict mode)
 - Vite
 - CSS (custom properties, Grid, Flexbox, 3D card flip)
 - Font Awesome icons
@@ -26,14 +27,15 @@ Memory game application is designed to test player's mnemonic skills in a fun wa
 
 ```
 src/
-  App.jsx                 setup screen or game
+  App.tsx                 setup screen or game
+  types.ts                shared types (Theme, GridSize, CardData)
   components/
-    SetupScreen.jsx       theme and grid size selection
-    Game.jsx              game state: deck, open cards, matches, moves
-    Card.jsx              single flip card
-    ResultModal.jsx       end of game results
-  hooks/useTimer.js       seconds counter
-  lib/deck.js             shuffling and deck generation
+    SetupScreen.tsx       theme and grid size selection
+    Game.tsx              game state: deck, open cards, matches, moves
+    Card.tsx              single flip card
+    ResultModal.tsx       end of game results
+  hooks/useTimer.ts       seconds counter
+  lib/deck.ts             shuffling and deck generation
 ```
 
 ## Start Locally
